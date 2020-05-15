@@ -1,0 +1,33 @@
+1: package com.Alex.iostreams;
+2: 
+3: import java.io.*;
+4: 
+5: /**
+6:  * Объект FileWriter записывает данные в файл. При вводе/выводе практически всегда применяется буферизация
+7:  * (попробуйте прочитать файл без нее, и вы увидите, что скорость чтения уменьшится в несколько раз),
+8:  * поэтому мы присоединяем надстройку BufferedWriter.
+9:  * После этого подключается PrintWriter, чтобы выполнять форматированный вывод. Файл данных, созданный
+10:  * такой конфигурацией ввода/вывода, можно прочитать как обычный текстовый файл.
+11:  *
+12:  * Когда данные входного потока исчерпываются, метод readLine() возвращает null.
+13:  * Для потока out явно вызывается метод close(); если не вызвать его для всех выходных файловых потоков,
+14:  * в буферах могут остаться данные, и файл получится неполным.
+15:  */
+16: public class BasicFileOutput {
+17:     static String file = "..\\JavaLearning\\src\\com\\Alex\\iostreams\\BasicFileOutput.out";
+18: 
+19:     public static void main(String[] args) throws IOException {
+20:         BufferedReader in = new BufferedReader(
+21:                 new StringReader(
+22:                         ReadTextFromFile.read("..\\JavaLearning\\src\\com\\Alex\\iostreams\\BasicFileOutput.java")));
+23:         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(file)));
+24:         int lineCount = 1;
+25:         String s;
+26: 
+27:         while((s = in.readLine()) != null )
+28:             out.println(lineCount++ + ": " + s);
+29:         out.close();
+30:         // Вывод содержимого файла
+31:         System.out.println(ReadTextFromFile.read(file));
+32:     }
+33: }
