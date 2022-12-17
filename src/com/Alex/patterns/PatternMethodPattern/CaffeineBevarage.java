@@ -28,7 +28,7 @@ public abstract class CaffeineBevarage {
     }
 
     /* This is a HOOK. It's a template of method which could do or not to do anything. If a subclass needs
-     * a special steps, it can implements them here. */
+     * a special steps, it can implement them here. */
     boolean customerWantsCondiments() {
         return true;
     }
