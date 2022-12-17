@@ -4,8 +4,8 @@ package ThinkingInJava.Threads.SharedResources.CircularSetTest;
  * Created by Alex on 07.09.2015 007.
  */
 public class CircularSet {
-    private int[] array;
-    private int len;
+    private final int[] array;
+    private final int len;
     private int index = 0;
 
     public CircularSet(int size) {

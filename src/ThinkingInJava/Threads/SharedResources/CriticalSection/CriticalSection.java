@@ -44,7 +44,7 @@ class Pair { // Not thread-safe
 abstract class PairManager {
     AtomicInteger checkCounter = new AtomicInteger(0);
     protected Pair p = new Pair();
-    private List<Pair> storage = Collections.synchronizedList(new ArrayList<>());
+    private final List<Pair> storage = Collections.synchronizedList(new ArrayList<>());
 
     public synchronized Pair getPair() {
         // Создаем копию, чтобы сохранить оригинал в безопасности:
@@ -86,7 +86,7 @@ class PairManager2 extends PairManager {
     }
 }
 
-// класс который выызвает метод инкремента
+// класс, который вызывает метод инкремента
 class PairManipulator implements Runnable {
     private PairManager pm;
 
@@ -103,7 +103,7 @@ class PairManipulator implements Runnable {
     }
 }
 
-// класс который проверяет состояние пары
+// класс, который проверяет состояние пары
 class PairChecker implements Runnable {
     private PairManager pm;
 
